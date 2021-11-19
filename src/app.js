@@ -1,4 +1,4 @@
-require('dotenv-safe').config()
+
 const express = require("express")
 const bodyParser = require("body-parser")
 const mongoose = require("mongoose")
@@ -6,8 +6,9 @@ const mongoose = require("mongoose")
 
 const app = express()
 
+require("dotenv-safe").config();
 //String de conexão
-mongoose.connect(process.env.MONGODB_URL),  {
+mongoose.connect(process.env.MONGODB_URI),  {
      useNewUrlParser: true,
      useUnifiedTopology: true
 };
@@ -15,6 +16,7 @@ mongoose.connect(process.env.MONGODB_URL),  {
 
 
 //Conexão com o mongo
+
 let db = mongoose.connection;
 
 // Captura de erro ou sucesso na conexão
